@@ -26,7 +26,5 @@ public class FCMController {
         }
     }
 
-    @GetMapping("hello")
-    public String send(){return "Hello";}
 
 }
