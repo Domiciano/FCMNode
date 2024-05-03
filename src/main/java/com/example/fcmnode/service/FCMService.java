@@ -16,7 +16,7 @@ import java.util.List;
 public class FCMService {
 
     public static String getAccessToken() throws IOException {
-        ClassPathResource resource = new ClassPathResource("fcmkey.json");
+        ClassPathResource resource = new ClassPathResource("fcmkey2.json");
         InputStream inputStream = resource.getInputStream();
         GoogleCredentials googleCredentials = GoogleCredentials
                 .fromStream(inputStream)
