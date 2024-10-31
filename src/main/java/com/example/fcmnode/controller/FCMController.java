@@ -14,19 +14,18 @@ import java.io.IOException;
 @RestController
 public class FCMController {
 
-    private FCMService service = new FCMService();
+    @Autowired
+    private FCMService service;
 
-    @PostMapping(value = "fcm/send", produces =  MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "fcm/messages", produces =  MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> send(@RequestBody String data){
         try {
             var token = service.getAccessToken();
             String response = service.POSTtoFCM(data, token);
-            System.out.println(response);
             return ResponseEntity.status(200).body(response);
         } catch (IOException e) {
-            return ResponseEntity.status(200).body(e.getMessage());
+            return ResponseEntity.status(400).body(e.getMessage());
         }
     }
-
 
 }
