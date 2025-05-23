@@ -42,9 +42,7 @@ requestPermissions(
 )
 ```
 
-# 2. Uso del módulo de mensajería en la aplicación móvil
-
-## ::2A. Recibir mensajes
+# Recibir mensajes
 Para empezar a recibir mensajes debe primero suscribirse a un topic. Luego de suscrito, los google play services mantendrán comunicación activa con el Broker de mensajería
 
 ```kotlin
@@ -53,7 +51,7 @@ Firebase.messaging.subscribeToTopic("noti").addOnSuccessListener {
 }
 ```
 
-## ::2B. Cree una clase para hacer uso del servicio de mensajería
+# Cree una clase para hacer uso del servicio de mensajería
 
 ```kotlin
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -69,7 +67,7 @@ class FCMService : FirebaseMessagingService() {
 }
 ```
 
-## ::2C. Registre el servicio en el manifest
+# Registre el servicio en el manifest
 ```xml
 <application>
     ...
@@ -84,7 +82,7 @@ class FCMService : FirebaseMessagingService() {
 </application>
 ```
 
-## ::2D. Crear notificaciones UI
+# Crear notificaciones UI
 Generar notificaciones visualmente. Puede invocarlas dentro del servicio
 ```kotlin
 import android.content.Context
@@ -126,13 +124,13 @@ val notifyPendingIntent = PendingIntent.getActivity(
     PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
 )
 ```
-## ::2E. Enviar datos
+# Enviar datos
 Para enviar datos debe hacer un POST Request a su nodo backend de modo que este nodo redirija al servicio de FCM. Recuerde que puede hacer POST Request por medio de la librería de Retrofit. <a href="https://github.com/Domiciano/AppMoviles241/tree/main/7.%20RestAPI">Aquí hay una guía</a>
 <br><br>
 Necesatará el modelo de mensaje de FCM, lo puede ver más adelante
 
 
-# 2. Configurar servicio de mensajería V1 en Google Cloud
+# Configurar servicio de mensajería V1 en Google Cloud
 Este es el servivio de mensajería actualizado y está pensado para se un nodo de backend. La razón es que ahora no hay clave de servicio estática, sino que es ahora un Token (dinámico). El Token se extrae mediante una credencial de administrados generado desde la Google Cloud Console
 
 
@@ -149,7 +147,7 @@ Para obtener una clave de servicio ingrese a la configuración de su proyecto.
     <li>Ya tendrá todo lo necesario para publicar mensajes PUSH</li>
 </ol>
 
-# 3. Nodo de backend
+# Nodo de backend
 El nodo de backend debe tener al menos un endpoint que reciba la solicitud de publicación de mensaje. Para realizarlo escoga el backend que mejor se ajuste a sus saberes
 
 
@@ -168,7 +166,7 @@ Este nodo está hecho con NodeJS en Javascript usando la librería de expressJS<
 
 Ambos repositorios muestran cómo se puede generar un short-time token para poder enviar solicitudes a FCM
 
-## ::3A. Detalles de conexión
+# Detalles de conexión
 El módulo de backend hace una solicitud HTTP POST al endpoint
 ```
 https://fcm.googleapis.com/v1/projects/facelogprueba/messages:send
