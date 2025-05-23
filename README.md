@@ -34,30 +34,6 @@ Para android 13 o superior, se requiere usar este permiso
 ```
 
 # Permisos de ejecución
-Versión Jetpack Compose
-```kotlin
-@Composable
-fun RequestPermission() {
-    val permissionsLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.RequestMultiplePermissions()
-    ) {
-
-    }
-    LaunchedEffect(true){
-        permissionsLauncher.launch(
-            arrayOf(
-                Manifest.permission.POST_NOTIFICATIONS
-            )
-        )
-    }
-}
-```
-
-
-
-
-Versión Android Views
-
 ```kotlin
 requestPermissions(
     arrayOf(
