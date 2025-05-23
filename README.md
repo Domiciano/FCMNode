@@ -3,17 +3,17 @@
 Esta guía corresponde al uso y manejo de Google Firebase Cloud Messaging V1, la versión más reciente del servicio de mensajería
 
 
-# 1. Configuración de la aplicación móvil
-En la aplicación móvil se debe configurar la entrada de mensajes asincrónicamente, añadir las dependencias necesarias y se debe definir la forma cómo se muestran. Para esto último, la guía mostrará cómo hacerlo con una Notification por medio de NotificationCompat.Builder
+# Configuración de la aplicación móvil
+Agregue el plugin de Firebase a su aplicación móvil en `Tool > Firebase`
 
-## ::1A. Dependencias
+# Dependencias
 
 Para esta sección necesita las dependencias de mensajería
 ```kotlin
 implementation 'com.google.firebase:firebase-messaging-ktx:24.0.0'
 ```
 
-## ::1B. Cree una clase de servicio
+# Cree una clase de servicio
 ```kotlin
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
@@ -28,16 +28,15 @@ class FCMService : FirebaseMessagingService() {
 }
 ```
 
-
-
-## ::1C. Permisos para notificaciones
+# Permisos para notificaciones
 Para android 13 o superior, se requiere usar este permiso
+
 ```xml
 <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-## ::1D. No olvide perdir el permiso en tiempo de ejecución
+# Permisos de ejecución
 Versión Jetpack Compose
 ```kotlin
 @Composable
