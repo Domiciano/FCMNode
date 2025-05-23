@@ -4,14 +4,11 @@ Esta guía corresponde al uso y manejo de Google Firebase Cloud Messaging V1, la
 
 
 # Configuración de la aplicación móvil
-Agregue el plugin de Firebase a su aplicación móvil en `Tool > Firebase`
+Agregue el plugin de Firebase a su aplicación móvil en `Tool > Firebase`.
 
-# Dependencias
+Conectese a su proyecto de Firebase
 
-Para esta sección necesita las dependencias de mensajería
-```kotlin
-implementation 'com.google.firebase:firebase-messaging-ktx:24.0.0'
-```
+Añada las dependencias
 
 # Cree una clase de servicio
 ```kotlin
