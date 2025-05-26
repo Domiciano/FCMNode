@@ -3,6 +3,7 @@ package com.example.fcmnode.service;
 import com.google.auth.oauth2.AccessToken;
 import com.google.auth.oauth2.GoogleCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,8 +24,11 @@ import java.util.List;
 @Service
 public class FCMService {
 
-    private static final String PROJECT_NAME = "facelogprueba";
-    private static final String KEY_FILE_NAME = "fcmkey.json";
+    @Value("${gcp.project.name}")
+    private String PROJECT_NAME;
+
+    @Value("${app.key.filename}")
+    private String KEY_FILE_NAME;
 
     public String getAccessToken() throws IOException {
         ClassPathResource resource = new ClassPathResource(KEY_FILE_NAME);

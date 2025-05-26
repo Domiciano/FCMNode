@@ -4,20 +4,18 @@ import com.example.fcmnode.service.FCMService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
 @RestController
+@RequestMapping("/fcm")
 public class FCMController {
 
     @Autowired
     private FCMService service;
 
-    @PostMapping(value = "fcm/messages", produces =  MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "messages", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> send(@RequestBody String data){
         try {
             var token = service.getAccessToken();
