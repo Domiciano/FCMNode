@@ -123,6 +123,23 @@ val notifyPendingIntent = PendingIntent.getActivity(
     context, 0, notifyIntent,
     PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
 )
+
+...
+
+
+manager.notify(
+//    id++,
+//    NotificationCompat
+//        .Builder(context, CHANNEL_ID)
+//        .setDefaults(Notification.DEFAULT_ALL)
+//        .setContentText(message)
+//        .setContentTitle(title)
+        .setContentIntent(notifyPendingIntent)
+//        .setSmallIcon(R.drawable.ic_launcher_foreground)
+//        .build()
+)
+
+
 ```
 # Enviar datos
 Para enviar datos debe hacer un POST Request a su nodo backend de modo que este nodo redirija al servicio de FCM. Recuerde que puede hacer POST Request por medio de la librería de Retrofit. <a href="https://github.com/Domiciano/AppMoviles241/tree/main/7.%20RestAPI">Aquí hay una guía</a>
