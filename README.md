@@ -152,18 +152,25 @@ Necesatará el modelo de mensaje de FCM, lo puede ver más adelante
 Este es el servivio de mensajería actualizado y está pensado para se un nodo de backend. La razón es que ahora no hay clave de servicio estática, sino que es ahora un Token (dinámico). El Token se extrae mediante una credencial de administrados generado desde la Google Cloud Console
 
 
-Para obtener una clave de servicio ingrese a la configuración de su proyecto.
-<ol>
-    <li>Vaya a su proyecto de Firebase. `Configuración del proyecto` > `Cloud Messaging` </li>
-    <li>Si no esta habilitada la V1, actívela mendiante el link</li>
-    <li>Vaya a Administrar cuentas de servicio</li>
-    <li>Cree una cuenta de servicio usando el botón CREAR CUENTA DE SERVICIO con un nombre cualquiera</li>
-    <li>En rol escoga Firebase Admin y guarde</li>
-    <li>Ingrese a la cuenta de servicio y vaya a la pestaña CLAVES</li>
-    <li>Agrege una CLAVE JSON nueva</li>
-    <li>Descargue el JSON, ese será su clave.json para el programa</li>
-    <li>Ya tendrá todo lo necesario para publicar mensajes PUSH</li>
-</ol>
+1. Para obtener una clave de servicio ingrese a la configuración de su proyecto.
+
+2. Vaya a su proyecto de Firebase. `Configuración del proyecto` > `Cloud Messaging`
+
+3. Si no esta habilitada la V1, actívela mendiante el link
+
+4. Vaya a Administrar cuentas de servicio
+
+5. Cree una cuenta de servicio usando el botón CREAR CUENTA DE SERVICIO con un nombre cualquiera
+
+6. En rol escoga Firebase Admin y guarde
+
+7. Ingrese a la cuenta de servicio y vaya a la pestaña CLAVES
+
+8. Agrege una CLAVE JSON nueva
+
+9. Descargue el JSON, ese será su clave.json para el programa
+
+10. Ya tendrá todo lo necesario para publicar mensajes PUSH
 
 # Nodo de backend
 El nodo de backend debe tener al menos un endpoint que reciba la solicitud de publicación de mensaje. Para realizarlo escoga el backend que mejor se ajuste a sus saberes
