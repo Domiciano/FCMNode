@@ -128,15 +128,15 @@ val notifyPendingIntent = PendingIntent.getActivity(
 
 
 manager.notify(
-//    id++,
-//    NotificationCompat
-//        .Builder(context, CHANNEL_ID)
-//        .setDefaults(Notification.DEFAULT_ALL)
-//        .setContentText(message)
-//        .setContentTitle(title)
-        .setContentIntent(notifyPendingIntent)
-//        .setSmallIcon(R.drawable.ic_launcher_foreground)
-//        .build()
+    id++,
+    NotificationCompat
+        .Builder(context, CHANNEL_ID)
+        .setDefaults(Notification.DEFAULT_ALL)
+        .setContentText(message)
+        .setContentTitle(title)
+        .setContentIntent(notifyPendingIntent)  <-- Se abre la aplicación al dar click a la notificación
+        .setSmallIcon(R.drawable.ic_launcher_foreground)
+        .build()
 )
 
 
