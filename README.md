@@ -135,6 +135,7 @@ manager.notify(
         .setContentText(message)
         .setContentTitle(title)
         .setContentIntent(notifyPendingIntent)  <-- Se abre la aplicación al dar click a la notificación
+        .setAutoCancel(true)
         .setSmallIcon(R.drawable.ic_launcher_foreground)
         .build()
 )
