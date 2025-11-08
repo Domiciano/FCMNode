@@ -3,6 +3,7 @@ package com.example.fcmnode.service;
 import com.google.auth.oauth2.AccessToken;
 import com.google.auth.oauth2.GoogleCredentials;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -23,12 +24,8 @@ import java.util.List;
 @Service
 public class FCMService {
 
-    private static final String PROJECT_NAME = "facelogprueba";
-    private static final String KEY_FILE_NAME = "fcmkey.json";
-
-    public String getAccessToken() throws IOException {
-        ClassPathResource resource = new ClassPathResource(KEY_FILE_NAME);
-        InputStream inputStream = resource.getInputStream();
+    public String getAccessTokenUsingKey(String jsonkey) throws IOException {
+        InputStream inputStream = new ByteArrayInputStream(jsonkey.getBytes(StandardCharsets.UTF_8));
         GoogleCredentials googleCredentials = GoogleCredentials
                 .fromStream(inputStream)
                 .createScoped(List.of("https://www.googleapis.com/auth/firebase.messaging"));
@@ -40,13 +37,13 @@ public class FCMService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public String POSTtoFCM(String json, String FCM_KEY) throws IOException {
+    public String POSTtoFCM(String json, String FCM_KEY, String projectId) throws IOException {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/json; UTF-8");
         headers.set("Authorization", "Bearer " + FCM_KEY);
 
         HttpEntity<String> request = new HttpEntity<>(json, headers);
-        ResponseEntity<String> response = restTemplate.postForEntity("https://fcm.googleapis.com/v1/projects/"+PROJECT_NAME+"/messages:send", request, String.class);
+        ResponseEntity<String> response = restTemplate.postForEntity("https://fcm.googleapis.com/v1/projects/"+projectId+"/messages:send", request, String.class);
 
         if (response.getStatusCode() == HttpStatus.OK) {
             return response.getBody();
@@ -54,6 +51,7 @@ public class FCMService {
             throw new IOException("HTTP Error: " + response.getStatusCode() + ", " + response.getBody());
         }
     }
+
 
 
 }
