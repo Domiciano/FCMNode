@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Llave de la cuenta de servicio: nunca al repositorio ###
+fcm-key.json
+*-firebase-adminsdk-*.json
